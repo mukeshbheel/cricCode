@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.cricket_commentary"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -30,11 +30,21 @@ android {
         versionName = flutter.versionName
     }
 
+    packaging {
+        // This handles all libc++_shared.so duplicates from all ABIs
+        pickFirst("lib/**/libc++_shared.so")
+    }
+
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+        getByName("release") {
             signingConfig = signingConfigs.getByName("debug")
+
+            isMinifyEnabled = true
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }

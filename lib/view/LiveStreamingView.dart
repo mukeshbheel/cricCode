@@ -1,4 +1,5 @@
 import 'package:cricket_commentary/controller/LiveStreamController.dart';
+import 'package:cricket_commentary/utils/ApiUrlConstants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class _LivestreamingviewState extends State<Livestreamingview> {
     super.initState();
 
     _vlcPlayerController = VlcPlayerController.network(
-      'rtmp://192.168.0.28/live/stream',
+      ApiUrlConstants.rtmpUrl,
       hwAcc: HwAcc.full,
       autoPlay: true,
       options: VlcPlayerOptions(
