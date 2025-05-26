@@ -1,6 +1,7 @@
 import 'package:cricket_commentary/controller/SocketController.dart';
 import 'package:cricket_commentary/view/LiveStreamingView.dart';
 import 'package:cricket_commentary/view/ScoringView.dart';
+import 'package:cricket_commentary/view/StartStreamingView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,6 +39,13 @@ class _HomeviewState extends State<Homeview> {
                 Get.to(Scoringview());
               },
               child: const Text('Go to Scoring Screen'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(StartStreamingView());
+              },
+              child: const Text('Start Live stream'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
